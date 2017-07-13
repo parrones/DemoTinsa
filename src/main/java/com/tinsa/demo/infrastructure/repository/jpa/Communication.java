@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity(name = "communications")
 @Table(name = "COMMUNICATIONS")
-public class Communication {
+public class Communication extends Datable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity(name="clients")
 @Table(name="CLIENTS")
-public class Client 
+public class Client extends Datable
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
