@@ -20,4 +20,4 @@ Esta operación crea un nuevo cliente con el tipo de envío(fax,sms) que ha eleg
 		"communication": "fax",
 		"recipient": "913345789"
 	  }
--Por último hacer un POST a http://localhost:8080/communications-manager/api/clients
+- Por último hacer un POST a http://localhost:8080/communications-manager/api/clients
