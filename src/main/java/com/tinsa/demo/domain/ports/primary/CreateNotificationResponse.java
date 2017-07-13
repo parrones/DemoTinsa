@@ -10,11 +10,6 @@ public class CreateNotificationResponse
 	{
 		this.notificatioResult = operationResult;
 	}
-	
-//	public boolean isSuccess()
-//	{
-//		return this.notificatioResult == NotificationResult.OK;
-//	}
 
 	public NotificationResult getNotificatioResult() 
 	{

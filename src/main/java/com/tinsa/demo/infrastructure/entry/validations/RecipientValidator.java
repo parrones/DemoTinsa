@@ -12,7 +12,6 @@ public class RecipientValidator implements ConstraintValidator<ValidRecipient, S
 	@Override
 	public void initialize(ValidRecipient constraintAnnotation) 
 	{
-		
 	}
 
 	@Override

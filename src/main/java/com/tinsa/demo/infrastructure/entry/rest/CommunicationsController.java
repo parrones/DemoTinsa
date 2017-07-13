@@ -17,7 +17,7 @@ import com.tinsa.demo.domain.ports.primary.CreateNotificationUseCase;
 
 @RestController
 @RequestMapping("/api")
-public class CommunicationsResource {
+public class CommunicationsController {
 
 	@Autowired
 	private CreateClientUseCase createClientUseCase;
