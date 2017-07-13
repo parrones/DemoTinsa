@@ -6,5 +6,5 @@ public interface CommunicationRepository
 {
 	void save(Communication communication);
 	
-	boolean exist(String destinatario, String tipoEnvio);
+	boolean exist(String message, String status, long clientId);
 }

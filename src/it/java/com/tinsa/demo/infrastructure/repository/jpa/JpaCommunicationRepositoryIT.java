@@ -19,9 +19,7 @@ public class JpaCommunicationRepositoryIT
 {
 	private static final String STATUS_KO = "KO";
 	private static final String STATUS_OK = "OK";
-	private static final String TIPO_ENVIO = "SMS";
-	private static final String MENSAJE = "mensaje";
-	private static final String DESTINATARIO = "6000000";
+	private static final String MESSAGE = "message";
 	
 	@Autowired
 	private CommunicationRepository communicationRepository;
@@ -29,24 +27,24 @@ public class JpaCommunicationRepositoryIT
 	@Test
 	public void saveOKCommunications()
 	{
-		Communication communication = new Communication(DESTINATARIO, MENSAJE, TIPO_ENVIO, STATUS_OK);
+		Communication communication = new Communication(MESSAGE, 1l, STATUS_OK);
 		
-		assertFalse(communicationRepository.exist(DESTINATARIO, TIPO_ENVIO));
+		assertFalse(communicationRepository.exist(MESSAGE, STATUS_OK, 1l));
 		
 		communicationRepository.save(communication);
 		
-		assertTrue(communicationRepository.exist(DESTINATARIO, TIPO_ENVIO));
+		assertTrue(communicationRepository.exist(MESSAGE, STATUS_OK, 1l));
 	}
 	
 	@Test
 	public void saveKOCommunications()
 	{
-		Communication communication = new Communication(DESTINATARIO, MENSAJE, TIPO_ENVIO, STATUS_KO);
+		Communication communication = new Communication(MESSAGE, 2l, STATUS_KO);
 		
-		assertFalse(communicationRepository.exist(DESTINATARIO, TIPO_ENVIO));
+		assertFalse(communicationRepository.exist(MESSAGE, STATUS_KO, 2l));
 		
 		communicationRepository.save(communication);
 		
-		assertTrue(communicationRepository.exist(DESTINATARIO, TIPO_ENVIO));
+		assertTrue(communicationRepository.exist(MESSAGE, STATUS_KO, 2l));
 	}
 }

@@ -29,7 +29,7 @@ public class CreateNotificationUseCase
 		{
 			NotificationRepository instanceOfNotificationRepository = notificationfactory.getInstance(optClient.get().getCommunication());
 			NotificationResult operationResult = instanceOfNotificationRepository.sendNotification(optClient.get().getRecipient(), request.getMessage());
-			communicationRepository.save(new Communication(optClient.get().getRecipient(), request.getMessage(), optClient.get().getCommunication(), operationResult.name()));
+			communicationRepository.save(new Communication(request.getMessage(), request.getClientId(), operationResult.name()));
 			response.setNotificationResult(operationResult);
 		}
 		else

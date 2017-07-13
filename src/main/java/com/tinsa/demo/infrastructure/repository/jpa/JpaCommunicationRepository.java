@@ -1,6 +1,5 @@
 package com.tinsa.demo.infrastructure.repository.jpa;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,23 +15,19 @@ public class JpaCommunicationRepository implements CommunicationRepository {
 	private SpringCrudCommunicationRepository crudRepository;
 
 	@Override
-	public void save(Communication communication) {
-
-		com.tinsa.demo.infrastructure.repository.jpa.Communication repoCommunication = crudRepository
-				.findByDestinatarioAndTipoEnvio(communication.getDestinatario(), communication.getTipoEnvio());
-		if (repoCommunication == null) {
-			repoCommunication = new com.tinsa.demo.infrastructure.repository.jpa.Communication(
-					communication.getDestinatario(), communication.getMensaje(), communication.getEstado(),
-					communication.getTipoEnvio());
-			crudRepository.save(repoCommunication);
-		} else {
-			repoCommunication.setMensaje(communication.getMensaje());
-			repoCommunication.setEstado(communication.getEstado());
-		}
+	public void save(Communication communication) 
+	{
+		crudRepository.save(createRepoCommunication(communication));
 	}
 
 	@Override
-	public boolean exist(String destinatario, String tipoEnvio) {
-		return crudRepository.findByDestinatarioAndTipoEnvio(destinatario, tipoEnvio)!=null;
+	public boolean exist(String message, String status, long clientId) {
+		return crudRepository.findByMessageAndStatusAndClientId(message, status, clientId) != null;
+	}
+	
+	private com.tinsa.demo.infrastructure.repository.jpa.Communication createRepoCommunication (Communication communication)
+	{
+		return new com.tinsa.demo.infrastructure.repository.jpa.Communication(
+				communication.getMessage(), communication.getStatus(), communication.getClientId());
 	}
 }

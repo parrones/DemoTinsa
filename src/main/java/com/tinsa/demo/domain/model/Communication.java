@@ -2,48 +2,38 @@ package com.tinsa.demo.domain.model;
 
 public class Communication 
 {
-	private String destinatario;
-	private String mensaje;
-	private String tipoEnvio;
-	private String estado;
+	private String message;
+	private long clientId;
+	private String status;
 	
-	public Communication(String destinatario, String mensaje, String tipoEnvio, String estado) 
+	public Communication(String message, long clientId, String status) 
 	{
-		this.destinatario = destinatario;
-		this.mensaje = mensaje;
-		this.tipoEnvio = tipoEnvio;
-		this.estado = estado;
+		this.message = message;
+		this.clientId = clientId;
+		this.status = status;
 	}
 
-	public String getDestinatario() {
-		return destinatario;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setDestinatario(String destinatario) {
-		this.destinatario = destinatario;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public String getMensaje() {
-		return mensaje;
+	public long getClientId() {
+		return clientId;
 	}
 
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
+	public void setClientId(long clientId) {
+		this.clientId = clientId;
 	}
 
-	public String getTipoEnvio() {
-		return tipoEnvio;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setTipoEnvio(String tipoEnvio) {
-		this.tipoEnvio = tipoEnvio;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SpringCrudCommunicationRepository extends CrudRepository<Communication, Long>
 {
-	Communication findByDestinatarioAndTipoEnvio(String destinatario, String tipoEnvio);
+	Communication findByMessageAndStatusAndClientId(String message, String status, long clientId);
 }
