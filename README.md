@@ -30,5 +30,5 @@ Esta operación envía una notificación al cliente. La identificación del clie
 	* {
 		"message": "Mensaje de prueba"
           }
-- Por último hacer un POST a http://localhost:8080/communications-manager/api/clients/{clientId}/notification.
+- Por último hacer un POST a http://localhost:8080/communications-manager/api/clients/{clientId}/notifications.
 	* clientId puede ser sustituido por el resultado de la operación anterior.
