@@ -34,7 +34,7 @@ public class CreateNotificationUseCaseTest
 	@Mock
 	private ClientRepository clientRepository;
 	@Mock
-	private NotificationFactory notificationfactory;
+	private NotifierFactory notificationfactory;
 	@Mock
 	private NotificationRepository notificationRepository;
 	@InjectMocks

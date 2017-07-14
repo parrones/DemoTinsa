@@ -3,13 +3,13 @@ package com.tinsa.demo.domain.ports.primary;
 public class ClientRequest 
 {
 	private String name;
-	private String notificationType;
+	private String communication;
 	private String recipient;
 	
-	public ClientRequest(String name, String notificationType, String recipient) 
+	public ClientRequest(String name, String communication, String recipient) 
 	{
 		this.name = name;
-		this.notificationType = notificationType;
+		this.communication = communication;
 		this.recipient = recipient;
 	}
 
@@ -21,12 +21,12 @@ public class ClientRequest
 		this.name = name;
 	}
 
-	public String getNotificationType() {
-		return notificationType;
+	public String getCommunication() {
+		return communication;
 	}
 
-	public void setNotificationType(String notificationType) {
-		this.notificationType = notificationType;
+	public void setCommunication(String communication) {
+		this.communication = communication;
 	}
 
 	public String getRecipient() {

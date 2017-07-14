@@ -21,9 +21,9 @@ public class Client extends Datable
 	@NotNull
 	private String name;
 
-	@Column(name = "NOTIFICATION_TYPE")
+	@Column(name = "COMMUNICATION")
 	@NotNull
-	private String notificationType;
+	private String communication;
 	
 	@Column(name = "RECIPIENT")
 	@NotNull
@@ -34,10 +34,10 @@ public class Client extends Datable
 		
 	}
 
-	public Client(String name, String notificationType, String recipient) 
+	public Client(String name, String communication, String recipient) 
 	{
 		this.name = name;
-		this.notificationType = notificationType;
+		this.communication = communication;
 		this.recipient = recipient;
 	}
 
@@ -57,12 +57,12 @@ public class Client extends Datable
 		this.name = name;
 	}
 
-	public String getNotificationType() {
-		return notificationType;
+	public String getCommunication() {
+		return communication;
 	}
 
-	public void setNotificationType(String notificationType) {
-		this.notificationType = notificationType;
+	public void setCommunication(String communication) {
+		this.communication = communication;
 	}
 
 	public String getRecipient() {

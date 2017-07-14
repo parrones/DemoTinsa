@@ -18,7 +18,7 @@ public class CreateNotificationUseCase
 	@Autowired
 	private ClientRepository clientRepository;
 	@Autowired
-	private NotificationFactory notificationfactory;
+	private NotifierFactory notifierfactory;
 	@Autowired
 	private NotificationRepository notificationRepository;
 	
@@ -27,8 +27,8 @@ public class CreateNotificationUseCase
 		Optional<Client> optClient = clientRepository.findByClientId(request.getClientId());
 		if(optClient.isPresent())
 		{
-			NotifierRepository instanceOfNotificationRepository = notificationfactory.getInstance(optClient.get().getNotificationType());
-			NotificationResult operationResult = instanceOfNotificationRepository.sendNotification(optClient.get().getRecipient(), request.getMessage());
+			NotifierRepository instanceOfNotifierRepository = notifierfactory.getInstance(optClient.get().getCommunication());
+			NotificationResult operationResult = instanceOfNotifierRepository.sendNotification(optClient.get().getRecipient(), request.getMessage());
 			long notificationId = notificationRepository.save(new Notification(request.getMessage(), request.getClientId(), operationResult.name()));
 			response.setNotificationId(notificationId);
 			response.setNotificationResult(operationResult);

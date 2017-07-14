@@ -1,6 +1,6 @@
 package com.tinsa.demo.domain.model;
 
-public enum NotificationTypes 
+public enum CommunicationTypes 
 {
 	SMS, FAX
 }

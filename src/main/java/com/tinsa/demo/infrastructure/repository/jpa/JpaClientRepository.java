@@ -17,9 +17,9 @@ public class JpaClientRepository implements ClientRepository {
 
 	@Override
 	public long save(com.tinsa.demo.domain.model.Client client) {
-		Client repoClient = crudRepository.findByNameAndNotificationType(client.getName(), client.getNotificationType());
+		Client repoClient = crudRepository.findByNameAndCommunication(client.getName(), client.getCommunication());
 		if (repoClient == null) {
-			repoClient = new Client(client.getName(), client.getNotificationType(), client.getRecipient());
+			repoClient = new Client(client.getName(), client.getCommunication(), client.getRecipient());
 			return crudRepository.save(repoClient).getId();
 		} else {
 			repoClient.setRecipient(client.getRecipient());
@@ -28,8 +28,8 @@ public class JpaClientRepository implements ClientRepository {
 	}
 
 	@Override
-	public boolean exist(String name, String notificationType) {
-		return crudRepository.findByNameAndNotificationType(name, notificationType) != null;
+	public boolean exist(String name, String communication) {
+		return crudRepository.findByNameAndCommunication(name, communication) != null;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class JpaClientRepository implements ClientRepository {
 			return Optional.empty();
 		}
 
-		return Optional.of(new com.tinsa.demo.domain.model.Client(repoClient.getName(), repoClient.getNotificationType(),
+		return Optional.of(new com.tinsa.demo.domain.model.Client(repoClient.getName(), repoClient.getCommunication(),
 				repoClient.getRecipient()));
 	}
 }

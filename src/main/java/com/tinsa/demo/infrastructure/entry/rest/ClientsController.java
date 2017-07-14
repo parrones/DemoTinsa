@@ -27,7 +27,7 @@ public class ClientsController {
 	@RequestMapping(value = "/clients", method = RequestMethod.POST)
 	public ResponseEntity<CreateClientResponse> createClient(@Valid @RequestBody CreateClientRequest restRequest) {
 		com.tinsa.demo.domain.ports.primary.ClientRequest request = new com.tinsa.demo.domain.ports.primary.ClientRequest(
-				restRequest.getName(), restRequest.getNotificationType(), restRequest.getRecipient());
+				restRequest.getName(), restRequest.getCommunication(), restRequest.getRecipient());
 		com.tinsa.demo.domain.ports.primary.ClientResponse response = new com.tinsa.demo.domain.ports.primary.ClientResponse();
 
 		createClientUseCase.execute(request, response);
