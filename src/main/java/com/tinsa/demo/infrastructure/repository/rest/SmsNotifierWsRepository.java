@@ -9,12 +9,12 @@ import org.springframework.web.client.RestTemplate;
 
 
 import com.tinsa.demo.domain.model.NotificationResult;
-import com.tinsa.demo.domain.ports.secondary.NotificationRepository;
+import com.tinsa.demo.domain.ports.secondary.NotifierRepository;
 
 @Component
-public class SmsNotificationWsRepository implements NotificationRepository{
+public class SmsNotifierWsRepository implements NotifierRepository{
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(SmsNotificationWsRepository.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SmsNotifierWsRepository.class);
 	private String smsUrl = "http://localhost:9100/tinsa/sms";
 
 	public void setSmsNotificationServiceUrl(String url)

@@ -25,10 +25,10 @@ import com.tinsa.demo.domain.model.NotificationResult;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class SmsNotificationWsRepositoryIT 
+public class FaxNotifierWsRepositoryIT 
 {
-	private static final String DEFAULT_PORT = "8084";
-	private static final String PHONE = "600000";
+	private static final String DEFAULT_PORT = "8085";
+	private static final String PHONE = "911234567";
 	private static final String MESSAGE = "message";
 	private static final String CONTENT_TYPE = "Content-Type";
 	private static final String CONTENT_TYPE_JSON = MediaType.APPLICATION_JSON_VALUE;
@@ -40,12 +40,12 @@ public class SmsNotificationWsRepositoryIT
 	public WireMockClassRule instanceRule = wireMockRule;
 	
 	@Autowired
-	private SmsNotificationWsRepository notificationRepository;
+	private FaxNotifierWsRepository notificationRepository;
 	
 	@Before
 	  public void setUp()
 	  {
-		notificationRepository.setSmsNotificationServiceUrl("http://localhost:" + port + "/tinsa/sms");
+		notificationRepository.setFaxNotificationServiceUrl("http://localhost:" + port + "/tinsa/fax");
 	  }
 	
 	@AfterClass
@@ -57,7 +57,7 @@ public class SmsNotificationWsRepositoryIT
 	@Test
 	public void sendNotification()
 	{
-		 stubFor(get(urlEqualTo("/tinsa/sms?phone=" + PHONE + "&message=" + MESSAGE))
+		 stubFor(get(urlEqualTo("/tinsa/fax?phone=" + PHONE + "&message=" + MESSAGE))
 			            .willReturn(aResponse().withStatus(200).withHeader(CONTENT_TYPE, CONTENT_TYPE_JSON)
 			                .withBody(jsonStatus())));
 		 
@@ -69,7 +69,7 @@ public class SmsNotificationWsRepositoryIT
 	@Test
 	public void sendNotificationError()
 	{
-		 stubFor(get(urlEqualTo("/tinsa/sms?phone=" + PHONE + "&message=" + MESSAGE))
+		 stubFor(get(urlEqualTo("/tinsa/fax?phone=" + PHONE + "&message=" + MESSAGE))
 			            .willReturn(aResponse().withStatus(500)));
 		 
 		 NotificationResult result = notificationRepository.sendNotification(PHONE, MESSAGE);

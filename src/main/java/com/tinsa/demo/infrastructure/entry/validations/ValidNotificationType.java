@@ -10,10 +10,10 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = CommunicationValidator.class)
+@Constraint(validatedBy = NotificationTypeValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidCommunication 
+public @interface ValidNotificationType 
 {
 	String[] acceptedValues();
 	String message() default "Invalid phone number";

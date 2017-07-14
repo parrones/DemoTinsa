@@ -8,7 +8,7 @@ public interface ClientRepository
 {
 	long save(Client client);
 	
-	boolean exist(String name, String communication);
+	boolean exist(String name, String notificationType);
 	
 	Optional<Client> findByClientId(long clientId);
 }

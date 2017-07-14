@@ -17,7 +17,7 @@ import com.tinsa.demo.domain.ports.primary.CreateNotificationUseCase;
 
 @RestController
 @RequestMapping("/api")
-public class CommunicationsController {
+public class ClientsController {
 
 	@Autowired
 	private CreateClientUseCase createClientUseCase;
@@ -27,7 +27,7 @@ public class CommunicationsController {
 	@RequestMapping(value = "/clients", method = RequestMethod.POST)
 	public ResponseEntity<CreateClientResponse> createClient(@Valid @RequestBody CreateClientRequest restRequest) {
 		com.tinsa.demo.domain.ports.primary.ClientRequest request = new com.tinsa.demo.domain.ports.primary.ClientRequest(
-				restRequest.getName(), restRequest.getCommunication(), restRequest.getRecipient());
+				restRequest.getName(), restRequest.getNotificationType(), restRequest.getRecipient());
 		com.tinsa.demo.domain.ports.primary.ClientResponse response = new com.tinsa.demo.domain.ports.primary.ClientResponse();
 
 		createClientUseCase.execute(request, response);
@@ -38,8 +38,8 @@ public class CommunicationsController {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	}
 
-	@RequestMapping(value = "/clients/{clientId}/notification", method = RequestMethod.POST)
-	public ResponseEntity<?> createNotification(@PathVariable("clientId") long clientId,
+	@RequestMapping(value = "/clients/{clientId}/notifications", method = RequestMethod.POST)
+	public ResponseEntity<CreateNotificationResponse> createNotification(@PathVariable("clientId") long clientId,
 			@Valid @RequestBody CreateNotificationRequest restRequest) 
 	{
 		com.tinsa.demo.domain.ports.primary.CreateNotificationRequest request = new com.tinsa.demo.domain.ports.primary.CreateNotificationRequest(
@@ -50,7 +50,7 @@ public class CommunicationsController {
 		
 		if(response.getNotificatioResult() == NotificationResult.OK)
 		{
-			return ResponseEntity.ok().build();
+			return new ResponseEntity<CreateNotificationResponse>(new CreateNotificationResponse(response.getNotificationId()), HttpStatus.OK);
 		}
 		else if(response.getNotificatioResult() == NotificationResult.CLIENT_NOT_FOUND)
 		{

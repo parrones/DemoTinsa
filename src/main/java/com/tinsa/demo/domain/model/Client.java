@@ -3,13 +3,13 @@ package com.tinsa.demo.domain.model;
 public class Client 
 {
 	private String name;
-	private String communication;
+	private String notificationType;
 	private String recipient;
 	
-	public Client(String name, String communication, String recipient) 
+	public Client(String name, String notificationType, String recipient) 
 	{
 		this.name = name;
-		this.communication = communication;
+		this.notificationType = notificationType;
 		this.recipient = recipient;
 	}
 
@@ -21,12 +21,12 @@ public class Client
 		this.name = name;
 	}
 
-	public String getCommunication() {
-		return communication;
+	public String getNotificationType() {
+		return notificationType;
 	}
 
-	public void setCommunication(String communication) {
-		this.communication = communication;
+	public void setNotificationType(String notificationType) {
+		this.notificationType = notificationType;
 	}
 
 	public String getRecipient() {

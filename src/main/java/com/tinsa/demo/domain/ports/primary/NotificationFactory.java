@@ -3,25 +3,25 @@ package com.tinsa.demo.domain.ports.primary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tinsa.demo.domain.model.CommunicationTypes;
-import com.tinsa.demo.domain.ports.secondary.NotificationRepository;
-import com.tinsa.demo.infrastructure.repository.rest.FaxNotificationWsRepository;
-import com.tinsa.demo.infrastructure.repository.rest.SmsNotificationWsRepository;
+import com.tinsa.demo.domain.model.NotificationTypes;
+import com.tinsa.demo.domain.ports.secondary.NotifierRepository;
+import com.tinsa.demo.infrastructure.repository.rest.FaxNotifierWsRepository;
+import com.tinsa.demo.infrastructure.repository.rest.SmsNotifierWsRepository;
 
 @Component
 public class NotificationFactory 
 {
 	@Autowired
-	SmsNotificationWsRepository smsNotificationRepository;
+	SmsNotifierWsRepository smsNotifierRepository;
 	@Autowired
-	FaxNotificationWsRepository faxNotificationRepository;
+	FaxNotifierWsRepository faxNotifierRepository;
 	
-	public NotificationRepository getInstance(String communication)
+	public NotifierRepository getInstance(String notificationType)
 	{
-		if(CommunicationTypes.SMS.name().equalsIgnoreCase(communication))
+		if(NotificationTypes.SMS.name().equalsIgnoreCase(notificationType))
 		{
-			return smsNotificationRepository;
+			return smsNotifierRepository;
 		}
-		return faxNotificationRepository;
+		return faxNotifierRepository;
 	}
 }

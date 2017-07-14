@@ -22,7 +22,7 @@ import com.tinsa.demo.domain.ports.secondary.ClientRepository;
 public class JpaClientRepositoryIT 
 {
 	private static final String RECIPIENT = "613728328";
-	private static final String COMMUNICATION = "SMS";
+	private static final String NOTIFICATION_TYPE = "SMS";
 	private static final String NAME = "Prueba";
 	
 	@Autowired
@@ -31,12 +31,12 @@ public class JpaClientRepositoryIT
 	@Test
 	public void saveSuccessfully()
 	{
-		com.tinsa.demo.domain.model.Client client = new com.tinsa.demo.domain.model.Client(NAME, COMMUNICATION, RECIPIENT);
-		assertFalse(clientRepository.exist(NAME, COMMUNICATION));
+		com.tinsa.demo.domain.model.Client client = new com.tinsa.demo.domain.model.Client(NAME, NOTIFICATION_TYPE, RECIPIENT);
+		assertFalse(clientRepository.exist(NAME, NOTIFICATION_TYPE));
 		
 		clientRepository.save(client);
 		
-		assertTrue(clientRepository.exist(NAME, COMMUNICATION));
+		assertTrue(clientRepository.exist(NAME, NOTIFICATION_TYPE));
 	}
 	
 	@Test

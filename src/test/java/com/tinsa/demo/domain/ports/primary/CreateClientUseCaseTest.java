@@ -23,7 +23,7 @@ public class CreateClientUseCaseTest
 	@Test
 	public void createClientSuccessfully()
 	{
-		ClientRequest request = new ClientRequest("name", "communication", "recipient");
+		ClientRequest request = new ClientRequest("name", "notificationType", "recipient");
 		ClientResponse response = new ClientResponse();
 		
 		useCase.execute(request, response);

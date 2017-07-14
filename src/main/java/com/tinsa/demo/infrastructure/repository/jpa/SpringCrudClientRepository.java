@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SpringCrudClientRepository extends CrudRepository<Client, Long>
 {
-	Client findByNameAndCommunication(String name, String communication);
+	Client findByNameAndNotificationType(String name, String notificationType);
 }

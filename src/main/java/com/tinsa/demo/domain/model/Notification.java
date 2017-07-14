@@ -1,12 +1,12 @@
 package com.tinsa.demo.domain.model;
 
-public class Communication 
+public class Notification 
 {
 	private String message;
 	private long clientId;
 	private String status;
 	
-	public Communication(String message, long clientId, String status) 
+	public Notification(String message, long clientId, String status) 
 	{
 		this.message = message;
 		this.clientId = clientId;

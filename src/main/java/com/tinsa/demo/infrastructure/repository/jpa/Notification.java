@@ -8,9 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "communications")
-@Table(name = "COMMUNICATIONS")
-public class Communication extends Datable{
+@Entity(name = "notifications")
+@Table(name = "NOTIFICATIONS")
+public class Notification extends Datable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -28,11 +28,11 @@ public class Communication extends Datable{
 	@NotNull
 	private long clientId;
 
-	public Communication() 
+	public Notification() 
 	{
 	}
 
-	public Communication(String message, String status, long clientId) 
+	public Notification(String message, String status, long clientId) 
 	{
 		this.message = message;
 		this.status = status;

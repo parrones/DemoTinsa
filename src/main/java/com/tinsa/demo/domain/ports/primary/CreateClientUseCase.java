@@ -14,7 +14,7 @@ public class CreateClientUseCase
 	
 	public void execute(ClientRequest request, ClientResponse response) 
 	{
-		long clientId = clientRepository.save(new Client(request.getName(), request.getCommunication(), request.getRecipient()));
+		long clientId = clientRepository.save(new Client(request.getName(), request.getNotificationType(), request.getRecipient()));
 		response.setClientId(clientId);
 	}
 }

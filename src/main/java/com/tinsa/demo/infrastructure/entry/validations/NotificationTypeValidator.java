@@ -8,12 +8,12 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class CommunicationValidator implements ConstraintValidator<ValidCommunication, String>{
+public class NotificationTypeValidator implements ConstraintValidator<ValidNotificationType, String>{
 
 	private List<String> valueList;
 	
 	@Override
-	public void initialize(ValidCommunication constraintAnnotation) 
+	public void initialize(ValidNotificationType constraintAnnotation) 
 	{
 		valueList = new ArrayList<String>();
         for(String val : constraintAnnotation.acceptedValues()) 

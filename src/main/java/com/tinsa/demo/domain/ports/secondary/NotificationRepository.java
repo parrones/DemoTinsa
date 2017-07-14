@@ -1,8 +1,10 @@
 package com.tinsa.demo.domain.ports.secondary;
 
-import com.tinsa.demo.domain.model.NotificationResult;
+import com.tinsa.demo.domain.model.Notification;
 
 public interface NotificationRepository 
 {
-	NotificationResult sendNotification(String recipient, String message);
+	long save(Notification notification);
+	
+	boolean exist(String message, String status, long clientId);
 }

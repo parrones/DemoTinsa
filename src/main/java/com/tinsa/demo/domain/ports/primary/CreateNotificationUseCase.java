@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tinsa.demo.domain.model.Client;
-import com.tinsa.demo.domain.model.Communication;
+import com.tinsa.demo.domain.model.Notification;
 import com.tinsa.demo.domain.model.NotificationResult;
 import com.tinsa.demo.domain.ports.secondary.ClientRepository;
-import com.tinsa.demo.domain.ports.secondary.CommunicationRepository;
 import com.tinsa.demo.domain.ports.secondary.NotificationRepository;
+import com.tinsa.demo.domain.ports.secondary.NotifierRepository;
 
 @Component
 public class CreateNotificationUseCase 
@@ -20,16 +20,17 @@ public class CreateNotificationUseCase
 	@Autowired
 	private NotificationFactory notificationfactory;
 	@Autowired
-	private CommunicationRepository communicationRepository;
+	private NotificationRepository notificationRepository;
 	
 	public void execute(CreateNotificationRequest request, CreateNotificationResponse response)
 	{
 		Optional<Client> optClient = clientRepository.findByClientId(request.getClientId());
 		if(optClient.isPresent())
 		{
-			NotificationRepository instanceOfNotificationRepository = notificationfactory.getInstance(optClient.get().getCommunication());
+			NotifierRepository instanceOfNotificationRepository = notificationfactory.getInstance(optClient.get().getNotificationType());
 			NotificationResult operationResult = instanceOfNotificationRepository.sendNotification(optClient.get().getRecipient(), request.getMessage());
-			communicationRepository.save(new Communication(request.getMessage(), request.getClientId(), operationResult.name()));
+			long notificationId = notificationRepository.save(new Notification(request.getMessage(), request.getClientId(), operationResult.name()));
+			response.setNotificationId(notificationId);
 			response.setNotificationResult(operationResult);
 		}
 		else

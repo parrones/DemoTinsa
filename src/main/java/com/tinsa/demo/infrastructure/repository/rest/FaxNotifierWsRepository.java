@@ -8,12 +8,12 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.tinsa.demo.domain.model.NotificationResult;
-import com.tinsa.demo.domain.ports.secondary.NotificationRepository;
+import com.tinsa.demo.domain.ports.secondary.NotifierRepository;
 
 @Component
-public class FaxNotificationWsRepository implements NotificationRepository{
+public class FaxNotifierWsRepository implements NotifierRepository{
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(FaxNotificationWsRepository.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FaxNotifierWsRepository.class);
 	private String faxUrl = "http://localhost:9100/tinsa/fax";
 
 	public void setFaxNotificationServiceUrl(String url)
